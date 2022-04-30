@@ -7,13 +7,13 @@ const isDevelopment = process.env.NODE_ENV !== "production";
 module.exports = {
   mode: process.env.NODE_ENV, // Modo de compilação development ou production
   devtool: isDevelopment ? "eval-source-map" : "source-map", // Mapa de código original para debugger
-  entry: path.resolve(__dirname, "src", "index.jsx"), // Arquivo principal para ser compiladp
+  entry: path.resolve(__dirname, "src", "index.tsx"), // Arquivo principal para ser compiladp
   output: {
     path: path.resolve(__dirname, "dist"), // Resultado da compilação
     filename: "bundle.js", // Nome do arquivo compilado
   },
   resolve: {
-    extensions: [".js", ".jsx"], // Extensões de arquivos que iram ser compilado
+    extensions: [".js", ".jsx", ".ts", ".tsx"], // Extensões de arquivos que iram ser compilado
   },
   devServer: {
     // Live reload configuration webpack-dev-serve
@@ -33,7 +33,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx$/,
+        test: /\.(j|t)sx$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
